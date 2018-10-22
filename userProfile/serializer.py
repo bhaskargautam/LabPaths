@@ -17,3 +17,16 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email', 'is_staff', 'url', 'profiles')
+
+class UserOnlySerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'is_staff', 'url')
+
+class UserProfileWithUserSerializer(serializers.HyperlinkedModelSerializer):
+    user = UserOnlySerializer()
+
+    class Meta:
+        model = UserProfile
+        fields = ('user', 'address', 'latitude', 'longitude', 'phone', 'url')

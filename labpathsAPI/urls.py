@@ -16,11 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from userProfile.views import UserViewSet, UserProfileViewSet
+from lab.views import ClinicalTestViewSet, LabViewSet, LabScheduleViewSet
+from appointment.views import AppointmentViewSet, AppointmentTestMappingViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'user', UserViewSet)
 router.register(r'user-profile', UserProfileViewSet)
+router.register(r'lab', LabViewSet)
+router.register(r'clinical-test', ClinicalTestViewSet)
+router.register(r'lab-schedule', LabScheduleViewSet)
+router.register(r'appointment', AppointmentViewSet)
+router.register(r'appointment-test', AppointmentTestMappingViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
